@@ -157,16 +157,16 @@ export const ChatArea: React.FC = () => {
     };
 
     return (
-      <div className="my-4 border border-dark-800 rounded-xl overflow-hidden shadow-2xl">
-        <div className="bg-dark-900 px-4 py-2 border-b border-dark-800 flex items-center justify-between text-xs text-slate-400">
-          <span className="font-semibold font-mono text-[10px] uppercase text-brand-400 tracking-wider">
+      <div className="my-4 border border-slate-200 dark:border-dark-800 rounded-xl overflow-hidden shadow-2xl">
+        <div className="bg-slate-100 dark:bg-dark-900 px-4 py-2 border-b border-slate-200 dark:border-dark-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <span className="font-semibold font-mono text-[10px] uppercase text-brand-650 dark:text-brand-400 tracking-wider">
             {language}
           </span>
           <div className="flex items-center gap-1.5">
             <button 
               onClick={handleAuditCode} 
               disabled={auditing}
-              className="p-1 hover:bg-white/5 rounded text-slate-400 hover:text-brand-400 flex items-center gap-1"
+              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1 cursor-pointer"
               title="Audit Code Quality"
             >
               <Cpu className={`w-3.5 h-3.5 ${auditing ? "animate-spin" : ""}`} />
@@ -174,15 +174,15 @@ export const ChatArea: React.FC = () => {
             </button>
             <button 
               onClick={handleSaveSnippet} 
-              className="p-1 hover:bg-white/5 rounded text-slate-400 hover:text-emerald-400 flex items-center gap-1"
+              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 cursor-pointer"
               title="Save Snippet"
             >
-              {saved ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Bookmark className="w-3.5 h-3.5" />}
+              {saved ? <Check className="w-3.5 h-3.5 text-emerald-650 dark:text-emerald-400" /> : <Bookmark className="w-3.5 h-3.5" />}
               <span>Save</span>
             </button>
             <button 
               onClick={loadIntoMonaco} 
-              className="p-1 hover:bg-white/5 rounded text-slate-400 hover:text-brand-400 flex items-center gap-1"
+              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1 cursor-pointer"
               title="Load into Editor"
             >
               <Terminal className="w-3.5 h-3.5" />
@@ -190,15 +190,15 @@ export const ChatArea: React.FC = () => {
             </button>
             <button 
               onClick={copyToClipboard} 
-              className="p-1 hover:bg-white/5 rounded text-slate-400 hover:text-brand-400"
+              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 cursor-pointer"
               title="Copy"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-650 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
           </div>
         </div>
-        <div className="bg-dark-950 p-4 overflow-x-auto">
-          <pre className="text-sm font-mono text-slate-300">
+        <div className="bg-[#f8fafc] dark:bg-dark-950 p-4 overflow-x-auto">
+          <pre className="text-sm font-mono text-slate-700 dark:text-slate-300">
             <code>{code}</code>
           </pre>
         </div>
@@ -215,21 +215,21 @@ export const ChatArea: React.FC = () => {
     return (
       <div
         onClick={() => setInput(prompt)}
-        className="glass-card border border-dark-800 rounded-xl p-4 hover:border-brand-500/30 hover:bg-dark-850/40 cursor-pointer transition-all hover:-translate-y-0.5 active:scale-[0.98] group flex flex-col gap-2"
+        className="glass-card border border-slate-200/80 dark:border-dark-800 rounded-xl p-4 hover:border-brand-500/30 hover:bg-slate-100/40 dark:hover:bg-dark-850/40 cursor-pointer transition-all hover:-translate-y-0.5 active:scale-[0.98] group flex flex-col gap-2 shadow-sm"
       >
-        <div className="p-2 w-9 h-9 rounded-lg bg-dark-900 text-brand-400 group-hover:bg-brand-500/10 transition-colors flex items-center justify-center">
+        <div className="p-2 w-9 h-9 rounded-lg bg-slate-100 dark:bg-dark-900 text-brand-500 dark:text-brand-400 group-hover:bg-brand-500/10 transition-colors flex items-center justify-center">
           {icon}
         </div>
         <div>
-          <h4 className="text-sm font-semibold text-slate-200">{title}</h4>
-          <p className="text-xs text-slate-500 mt-1">{description}</p>
+          <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200">{title}</h4>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{description}</p>
         </div>
       </div>
     );
   };
 
   return (
-    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-dark-950/20 relative">
+    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50/50 dark:bg-dark-950/20 relative transition-colors duration-300">
       <div 
         ref={scrollContainerRef}
         onScroll={handleScroll}
@@ -240,9 +240,9 @@ export const ChatArea: React.FC = () => {
           <div className="max-w-2xl mx-auto h-full flex flex-col justify-center py-10">
             <div className="text-center mb-10">
               <div className="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mx-auto mb-4 glowing-glow">
-                <Sparkles className="w-6 h-6 text-brand-400" />
+                <Sparkles className="w-6 h-6 text-brand-500 dark:text-brand-400" />
               </div>
-              <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
                 What can I build for you today?
               </h1>
               <p className="text-sm text-slate-500 mt-2 max-w-md mx-auto">
@@ -288,7 +288,7 @@ export const ChatArea: React.FC = () => {
                   className={`flex gap-4 ${isUser ? "justify-end animate-fade-in-up" : "animate-fade-in-up"}`}
                 >
                   {!isUser && (
-                    <div className="w-8 h-8 rounded-full bg-brand-500/10 border border-brand-500/25 flex items-center justify-center flex-shrink-0 text-brand-400">
+                    <div className="w-8 h-8 rounded-full bg-brand-500/10 border border-brand-500/25 flex items-center justify-center flex-shrink-0 text-brand-500 dark:text-brand-400">
                       <Sparkles className="w-4 h-4" />
                     </div>
                   )}
@@ -297,7 +297,7 @@ export const ChatArea: React.FC = () => {
                     className={`max-w-[85%] rounded-2xl px-5 py-3.5 shadow-sm leading-relaxed ${
                       isUser
                         ? "bg-brand-500 text-white rounded-tr-none"
-                        : "glass-card text-slate-200 border border-dark-800 rounded-tl-none markdown-body"
+                        : "glass-card text-slate-800 dark:text-slate-200 border border-slate-200/80 dark:border-dark-800 rounded-tl-none markdown-body"
                     }`}
                   >
                     {isUser ? (
@@ -313,7 +313,7 @@ export const ChatArea: React.FC = () => {
                             return !isInline ? (
                               <CodeBlock code={codeStr} language={match[1]} />
                             ) : (
-                              <code className={`${className} bg-dark-900 border border-dark-800 rounded px-1.5 py-0.5 text-xs text-brand-300 font-mono`} {...props}>
+                              <code className={`${className} bg-slate-100 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 rounded px-1.5 py-0.5 text-xs text-brand-650 dark:text-brand-300 font-mono`} {...props}>
                                 {children}
                               </code>
                             );
@@ -331,7 +331,7 @@ export const ChatArea: React.FC = () => {
                   </div>
 
                   {isUser && (
-                    <div className="w-8 h-8 rounded-full bg-dark-850 border border-dark-850 flex items-center justify-center flex-shrink-0 text-slate-400">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-dark-850 border border-slate-300 dark:border-dark-850 flex items-center justify-center flex-shrink-0 text-slate-600 dark:text-slate-400">
                       <Terminal className="w-4 h-4" />
                     </div>
                   )}
@@ -342,10 +342,10 @@ export const ChatArea: React.FC = () => {
             {/* SSE typing bubble */}
             {isStreaming && activeMessages[activeMessages.length - 1]?.content === "" && (
               <div className="flex gap-4 items-center">
-                <div className="w-8 h-8 rounded-full bg-brand-500/10 border border-brand-500/25 flex items-center justify-center flex-shrink-0 text-brand-400">
+                <div className="w-8 h-8 rounded-full bg-brand-500/10 border border-brand-500/25 flex items-center justify-center flex-shrink-0 text-brand-500 dark:text-brand-400">
                   <Sparkles className="w-4 h-4 animate-spin-slow" />
                 </div>
-                <div className="glass-card text-slate-400 px-5 py-3 rounded-2xl rounded-tl-none border border-dark-800 flex items-center gap-1">
+                <div className="glass-card text-slate-500 dark:text-slate-400 px-5 py-3 rounded-2xl rounded-tl-none border border-slate-200/80 dark:border-dark-800 flex items-center gap-1">
                   <span className="text-xs">Thinking</span>
                   <div className="typing-indicator flex items-center mt-1 ml-1">
                     <span></span>
@@ -371,18 +371,18 @@ export const ChatArea: React.FC = () => {
       </div>
 
       {/* Input bar section */}
-      <div className="p-4 bg-dark-950/40 border-t border-dark-800/80">
+      <div className="p-4 bg-slate-100/40 dark:bg-dark-950/40 border-t border-slate-200/80 dark:border-dark-800/80">
         <form onSubmit={handleSend} className="max-w-3xl mx-auto flex flex-col gap-2 relative">
           
           {/* File Attachment indicator pill */}
           {attachedFile && (
-            <div className="flex items-center gap-2 bg-brand-500/10 border border-brand-500/25 rounded-lg px-2.5 py-1 text-xs text-brand-400 max-w-fit animate-fade-in-up">
+            <div className="flex items-center gap-2 bg-brand-500/10 border border-brand-500/25 rounded-lg px-2.5 py-1 text-xs text-brand-550 dark:text-brand-400 max-w-fit animate-fade-in-up">
               <Paperclip className="w-3.5 h-3.5" />
               <span className="font-medium truncate max-w-[180px]">{attachedFile.name}</span>
               <button 
                 type="button" 
                 onClick={() => setAttachedFile(null)} 
-                className="hover:text-rose-400 transition-colors ml-1 p-0.5"
+                className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors ml-1 p-0.5"
               >
                 <X className="w-3 h-3" />
               </button>
@@ -400,7 +400,7 @@ export const ChatArea: React.FC = () => {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="p-3 bg-dark-900 border border-dark-800 hover:border-dark-700 text-slate-400 hover:text-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors"
+              className="p-3 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
               title="Attach Code File (.py, .js, .cpp, etc.)"
             >
               <Paperclip className="w-5 h-5" />
@@ -413,7 +413,7 @@ export const ChatArea: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask a coding question or paste your code..."
                 disabled={isStreaming}
-                className="w-full pl-4 pr-12 py-3 bg-dark-900 border border-dark-800 rounded-xl text-sm placeholder:text-slate-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/20"
+                className="w-full pl-4 pr-12 py-3 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 rounded-xl text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/20"
               />
               
               {isStreaming ? (

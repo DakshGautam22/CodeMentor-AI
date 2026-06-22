@@ -5,7 +5,8 @@ import { useUiStore } from "../../store/uiStore";
 import { useEditorStore } from "../../store/editorStore";
 import { 
   Plus, MessageSquare, Trash2, Edit2, Check, X, Pin, PinOff, 
-  Search, Bookmark, Settings, LogOut, ChevronLeft, ChevronRight, User, Terminal
+  Search, Bookmark, Settings, LogOut, ChevronLeft, ChevronRight, User, Terminal,
+  Sun, Moon
 } from "lucide-react";
 
 interface SidebarProps {
@@ -28,7 +29,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     chats, activeChatId, fetchHistory, 
     selectChat, createNewChat, deleteChat, renameChat, togglePinChat, setSearchQuery 
   } = useChatStore();
-  const { sidebarOpen, toggleSidebar } = useUiStore();
+  const { sidebarOpen, toggleSidebar, themeMode, toggleTheme } = useUiStore();
   const { toggleOpened: toggleEditor, isOpened: editorOpened } = useEditorStore();
 
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -90,20 +91,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
   }
 
   return (
-    <aside className="w-80 h-screen glass-panel border-r border-dark-800 flex flex-col z-30 transition-all duration-300 relative flex-shrink-0">
+    <aside className="w-80 h-screen glass-panel border-r border-slate-200/85 dark:border-dark-800 flex flex-col z-30 transition-all duration-300 relative flex-shrink-0">
       {/* Top Header */}
-      <div className="p-4 border-b border-dark-800 flex items-center justify-between">
+      <div className="p-4 border-b border-slate-200/85 dark:border-dark-800 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-brand-400 flex items-center justify-center shadow-lg shadow-brand-500/20">
             <Terminal className="w-4 h-4 text-white" />
           </div>
-          <span className="font-semibold text-lg bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+          <span className="font-semibold text-lg bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
             CodeMentor AI
           </span>
         </div>
         <button
           onClick={toggleSidebar}
-          className="p-1 hover:bg-white/5 border border-transparent hover:border-dark-800 rounded-lg text-slate-400 hover:text-slate-200"
+          className="p-1 hover:bg-slate-100 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-dark-800 rounded-lg text-slate-400 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
           title="Collapse Sidebar"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -124,13 +125,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </button>
 
         {/* Tab Selection */}
-        <div className="grid grid-cols-2 gap-1 p-1 bg-dark-900 border border-dark-800 rounded-lg mt-2">
+        <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-dark-900 border border-slate-200/80 dark:border-dark-800 rounded-lg mt-2">
           <button
             onClick={() => setActiveTab("chat")}
-            className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all ${
+            className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all cursor-pointer ${
               activeTab === "chat" 
-                ? "bg-dark-800 text-slate-100 shadow-sm" 
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-white dark:bg-dark-800 text-slate-900 dark:text-slate-100 shadow-sm" 
+                : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
             }`}
           >
             <span className="flex items-center justify-center gap-1.5">
@@ -142,10 +143,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
               setActiveTab("snippets");
               onShowSnippets();
             }}
-            className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all ${
+            className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all cursor-pointer ${
               activeTab === "snippets" 
-                ? "bg-dark-800 text-slate-100 shadow-sm" 
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-white dark:bg-dark-800 text-slate-900 dark:text-slate-100 shadow-sm" 
+                : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
             }`}
           >
             <span className="flex items-center justify-center gap-1.5">
@@ -165,7 +166,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               placeholder="Search chat history..."
               value={localSearch}
               onChange={(e) => setLocalSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-dark-900/50 border border-dark-800/80 rounded-xl text-sm placeholder:text-slate-500"
+              className="w-full pl-9 pr-4 py-2 bg-white dark:bg-dark-900/50 border border-slate-200/80 dark:border-dark-800/80 rounded-xl text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/25"
             />
           </div>
 
@@ -186,8 +187,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     onClick={() => selectChat(chat.id)}
                     className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all border ${
                       isActive
-                        ? "bg-brand-500/10 border-brand-500/20 text-brand-300"
-                        : "border-transparent hover:bg-dark-850 hover:border-dark-800/50 text-slate-400 hover:text-slate-200"
+                        ? "bg-brand-500/10 border-brand-500/20 text-brand-600 dark:text-brand-300"
+                        : "border-transparent hover:bg-slate-200/50 dark:hover:bg-dark-850 hover:border-slate-200 dark:hover:border-dark-800/50 text-slate-500 dark:text-slate-400 hover:text-slate-850 dark:hover:text-slate-200"
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0 flex-1 pr-1">
@@ -207,7 +208,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             type="text"
                             value={editTitle}
                             onChange={(e) => setEditTitle(e.target.value)}
-                            className="bg-dark-950 border border-brand-500/50 text-slate-100 text-xs rounded-md px-1.5 py-0.5 w-full focus:outline-none"
+                            className="bg-white dark:bg-dark-950 border border-brand-500/50 text-slate-800 dark:text-slate-100 text-xs rounded-md px-1.5 py-0.5 w-full focus:outline-none"
                             autoFocus
                           />
                           <button type="submit" className="p-0.5 hover:bg-brand-500/20 rounded text-emerald-400">
@@ -267,32 +268,44 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
 
       {/* Footer / User Profile section */}
-      <div className="mt-auto border-t border-dark-800 p-3 bg-dark-950/40 flex flex-col gap-1.5">
+      <div className="mt-auto border-t border-slate-200/80 dark:border-dark-800 p-3 bg-slate-100/40 dark:bg-dark-950/40 flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <div 
             onClick={onShowProfile}
-            className="flex items-center gap-2.5 p-1.5 hover:bg-white/5 rounded-xl cursor-pointer transition-colors min-w-0 flex-1 mr-2"
+            className="flex items-center gap-2.5 p-1.5 hover:bg-slate-200/40 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-colors min-w-0 flex-1 mr-2"
           >
-            <div className="w-8 h-8 rounded-full bg-dark-800 border border-dark-700 flex items-center justify-center flex-shrink-0 text-brand-400">
+            <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-dark-800 border border-slate-300 dark:border-dark-700 flex items-center justify-center flex-shrink-0 text-brand-500 dark:text-brand-400">
               <User className="w-4 h-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-xs font-semibold text-slate-200 truncate">{user?.name}</p>
-              <p className="text-[10px] text-slate-500 truncate">{user?.email}</p>
+              <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">{user?.name}</p>
+              <p className="text-[10px] text-slate-500 dark:text-slate-500 truncate">{user?.email}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-1 flex-shrink-0">
+            {/* Theme Toggler */}
+            <button
+              onClick={toggleTheme}
+              className={`p-1.5 border border-transparent rounded-lg cursor-pointer transition-colors ${
+                themeMode === "dark"
+                  ? "hover:bg-white/5 text-amber-400 hover:text-amber-300"
+                  : "hover:bg-black/5 text-indigo-650 hover:text-indigo-850"
+              }`}
+              title={`Switch to ${themeMode === "dark" ? "Light" : "Dark"} Mode`}
+            >
+              {themeMode === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
             <button
               onClick={onShowSettings}
-              className="p-1.5 hover:bg-white/5 border border-transparent hover:border-dark-800 rounded-lg text-slate-400 hover:text-slate-200"
+              className="p-1.5 hover:bg-slate-200/50 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-dark-800 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
               title="Assistant Settings"
             >
               <Settings className="w-4 h-4" />
             </button>
             <button
               onClick={logout}
-              className="p-1.5 hover:bg-rose-950/15 border border-transparent hover:border-rose-900/10 rounded-lg text-slate-400 hover:text-rose-400"
+              className="p-1.5 hover:bg-rose-100 dark:hover:bg-rose-950/15 border border-transparent hover:border-rose-200 dark:hover:border-rose-900/10 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer"
               title="Logout"
             >
               <LogOut className="w-4 h-4" />
@@ -303,10 +316,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Toggle Editor Shortcut */}
         <button
           onClick={toggleEditor}
-          className={`w-full py-1.5 px-3 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition-all ${
+          className={`w-full py-1.5 px-3 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
             editorOpened 
-              ? "bg-brand-500/15 border-brand-500/30 text-brand-400" 
-              : "bg-dark-900 border-dark-800 text-slate-400 hover:bg-dark-850 hover:text-slate-300"
+              ? "bg-brand-500/15 border-brand-500/30 text-brand-600 dark:text-brand-400" 
+              : "bg-white dark:bg-dark-900 border-slate-200 dark:border-dark-800 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-dark-850 hover:text-slate-850 dark:hover:text-slate-300"
           }`}
         >
           <Terminal className="w-3.5 h-3.5" />
