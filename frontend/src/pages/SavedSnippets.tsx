@@ -79,7 +79,7 @@ export const SavedSnippets: React.FC<SavedSnippetsProps> = ({ onBack }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="p-2 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-550 dark:text-slate-400 hover:text-slate-850 dark:hover:text-slate-200 rounded-xl transition-all"
+            className="p-2 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-550 dark:text-slate-300 hover:text-slate-850 dark:hover:text-slate-100 rounded-xl transition-all cursor-pointer"
             title="Back to Chat"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -91,7 +91,7 @@ export const SavedSnippets: React.FC<SavedSnippetsProps> = ({ onBack }) => {
         </div>
         <button
           onClick={fetchSnippets}
-          className="p-2 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-550 dark:text-slate-400 hover:text-slate-850 dark:hover:text-slate-200 rounded-xl transition-colors"
+          className="p-2 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-550 dark:text-slate-300 hover:text-slate-850 dark:hover:text-slate-100 rounded-xl transition-colors cursor-pointer"
           title="Refresh Snippets"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
@@ -146,21 +146,21 @@ export const SavedSnippets: React.FC<SavedSnippetsProps> = ({ onBack }) => {
                   <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={(e) => handleCopy(snippet.code, snippet.id, e)}
-                      className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+                      className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 rounded-lg text-slate-550 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 cursor-pointer"
                       title="Copy Code"
                     >
                       {copiedId === snippet.id ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                     <button
                       onClick={(e) => handleLoadInEditor(snippet.code, snippet.language, e)}
-                      className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400"
+                      className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 rounded-lg text-slate-550 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer"
                       title="Load into Monaco"
                     >
                       <Terminal className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={(e) => handleDelete(snippet.id, e)}
-                      className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400"
+                      className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 rounded-lg text-slate-500 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer"
                       title="Delete Snippet"
                     >
                       <Trash2 className="w-3.5 h-3.5" />

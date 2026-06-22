@@ -166,7 +166,7 @@ export const ChatArea: React.FC = () => {
             <button 
               onClick={handleAuditCode} 
               disabled={auditing}
-              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1 cursor-pointer"
+              className="p-1 hover:bg-black/5 dark:hover:bg-slate-800 rounded text-slate-550 dark:text-slate-300 hover:text-brand-600 dark:hover:text-slate-100 flex items-center gap-1 cursor-pointer"
               title="Audit Code Quality"
             >
               <Cpu className={`w-3.5 h-3.5 ${auditing ? "animate-spin" : ""}`} />
@@ -174,7 +174,7 @@ export const ChatArea: React.FC = () => {
             </button>
             <button 
               onClick={handleSaveSnippet} 
-              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 cursor-pointer"
+              className="p-1 hover:bg-black/5 dark:hover:bg-slate-800 rounded text-slate-550 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-slate-100 flex items-center gap-1 cursor-pointer"
               title="Save Snippet"
             >
               {saved ? <Check className="w-3.5 h-3.5 text-emerald-650 dark:text-emerald-400" /> : <Bookmark className="w-3.5 h-3.5" />}
@@ -182,7 +182,7 @@ export const ChatArea: React.FC = () => {
             </button>
             <button 
               onClick={loadIntoMonaco} 
-              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1 cursor-pointer"
+              className="p-1 hover:bg-black/5 dark:hover:bg-slate-800 rounded text-slate-550 dark:text-slate-300 hover:text-brand-600 dark:hover:text-slate-100 flex items-center gap-1 cursor-pointer"
               title="Load into Editor"
             >
               <Terminal className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ export const ChatArea: React.FC = () => {
             </button>
             <button 
               onClick={copyToClipboard} 
-              className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded text-slate-550 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 cursor-pointer"
+              className="p-1 hover:bg-black/5 dark:hover:bg-slate-800 rounded text-slate-550 dark:text-slate-300 hover:text-brand-600 dark:hover:text-slate-100 cursor-pointer"
               title="Copy"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-650 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -400,7 +400,7 @@ export const ChatArea: React.FC = () => {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="p-3 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
+              className="p-3 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors cursor-pointer"
               title="Attach Code File (.py, .js, .cpp, etc.)"
             >
               <Paperclip className="w-5 h-5" />

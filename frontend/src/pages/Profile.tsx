@@ -134,7 +134,7 @@ export const Profile: React.FC<ProfileProps> = ({ onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="py-2.5 px-4 bg-slate-100 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-xl text-sm font-semibold transition-colors"
+              className="py-2.5 px-4 bg-slate-100 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
             >
               Cancel
             </button>

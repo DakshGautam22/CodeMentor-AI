@@ -104,7 +104,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
         <button
           onClick={toggleSidebar}
-          className="p-1 hover:bg-slate-100 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-dark-800 rounded-lg text-slate-400 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
+          className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-slate-100 cursor-pointer"
           title="Collapse Sidebar"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -131,7 +131,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all cursor-pointer ${
               activeTab === "chat" 
                 ? "bg-white dark:bg-dark-800 text-slate-900 dark:text-slate-100 shadow-sm" 
-                : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+                : "text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100"
             }`}
           >
             <span className="flex items-center justify-center gap-1.5">
@@ -146,7 +146,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all cursor-pointer ${
               activeTab === "snippets" 
                 ? "bg-white dark:bg-dark-800 text-slate-900 dark:text-slate-100 shadow-sm" 
-                : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+                : "text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100"
             }`}
           >
             <span className="flex items-center justify-center gap-1.5">
@@ -230,7 +230,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button
                           onClick={(e) => handleTogglePin(chat.id, chat.isPinned, e)}
-                          className="p-1 hover:bg-white/5 rounded-md text-slate-500 hover:text-slate-300"
+                          className="p-1 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-md text-slate-450 dark:text-slate-400 hover:text-slate-750 dark:hover:text-slate-100"
                           title={chat.isPinned ? "Unpin Chat" : "Pin Chat"}
                         >
                           {chat.isPinned ? (
@@ -241,14 +241,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         </button>
                         <button
                           onClick={(e) => handleStartRename(chat.id, chat.title, e)}
-                          className="p-1 hover:bg-white/5 rounded-md text-slate-500 hover:text-slate-300"
+                          className="p-1 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-md text-slate-450 dark:text-slate-400 hover:text-slate-750 dark:hover:text-slate-100"
                           title="Rename Chat"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={(e) => handleDelete(chat.id, e)}
-                          className="p-1 hover:bg-white/5 rounded-md text-slate-500 hover:text-rose-400"
+                          className="p-1 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-md text-slate-450 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400"
                           title="Delete Chat"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -298,14 +298,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
             <button
               onClick={onShowSettings}
-              className="p-1.5 hover:bg-slate-200/50 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-dark-800 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
+              className="p-1.5 hover:bg-slate-200/50 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 cursor-pointer"
               title="Assistant Settings"
             >
               <Settings className="w-4 h-4" />
             </button>
             <button
               onClick={logout}
-              className="p-1.5 hover:bg-rose-100 dark:hover:bg-rose-950/15 border border-transparent hover:border-rose-200 dark:hover:border-rose-900/10 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer"
+              className="p-1.5 hover:bg-rose-100 dark:hover:bg-rose-950/30 border border-transparent hover:border-rose-200 dark:hover:border-rose-900/20 rounded-lg text-slate-500 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer"
               title="Logout"
             >
               <LogOut className="w-4 h-4" />
@@ -316,10 +316,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Toggle Editor Shortcut */}
         <button
           onClick={toggleEditor}
-          className={`w-full py-1.5 px-3 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`w-full py-2 px-3 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
             editorOpened 
               ? "bg-brand-500/15 border-brand-500/30 text-brand-600 dark:text-brand-400" 
-              : "bg-white dark:bg-dark-900 border-slate-200 dark:border-dark-800 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-dark-850 hover:text-slate-850 dark:hover:text-slate-300"
+              : "bg-white dark:bg-dark-900 border-slate-200 dark:border-dark-800 text-slate-500 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-850 dark:hover:text-slate-100"
           }`}
         >
           <Terminal className="w-3.5 h-3.5" />

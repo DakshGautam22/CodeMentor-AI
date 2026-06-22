@@ -120,7 +120,7 @@ export const EditorPanel: React.FC = () => {
           <div className="flex items-center gap-1.5">
             <button
               onClick={formatCode}
-              className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 text-xs flex items-center gap-1"
+              className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 text-xs flex items-center gap-1 cursor-pointer"
               title="Auto Format"
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -128,21 +128,21 @@ export const EditorPanel: React.FC = () => {
             </button>
             <button
               onClick={handleCopy}
-              className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+              className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 cursor-pointer"
               title="Copy Code"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
             <button
               onClick={handleDownload}
-              className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+              className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 cursor-pointer"
               title="Download File"
             >
               <Download className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setIsOpened(false)}
-              className="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+              className="p-1.5 hover:bg-black/5 dark:hover:bg-slate-800 border border-slate-200 dark:border-dark-800 hover:border-slate-350 dark:hover:border-dark-700 rounded-lg text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 cursor-pointer"
               title="Minimize Panel"
             >
               <Minimize2 className="w-3.5 h-3.5" />
