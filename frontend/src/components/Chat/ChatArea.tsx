@@ -22,11 +22,35 @@ export const ChatArea: React.FC = () => {
   const [attachedFile, setAttachedFile] = useState<{ name: string; content: string; language: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
 
-  // Auto scroll to latest messages
+  const messagesCount = activeMessages.length;
+
+  // Smooth scroll to bottom when a new message is added
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [activeMessages, isStreaming]);
+    if (messagesCount > 0) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      setShouldAutoScroll(true);
+    }
+  }, [messagesCount]);
+
+  // Keep content scrolled to bottom during streaming (using instant 'auto' to prevent jitter)
+  useEffect(() => {
+    if (isStreaming && shouldAutoScroll) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "auto" });
+    }
+  }, [activeMessages, isStreaming, shouldAutoScroll]);
+
+  // Detect when user manually scrolls up to pause auto-scrolling
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Check if user is near the bottom (within 150px)
+    const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 150;
+    setShouldAutoScroll(isNearBottom);
+  };
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -206,8 +230,11 @@ export const ChatArea: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col h-screen overflow-hidden bg-dark-950/20 relative">
-      {/* Messages Window */}
-      <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
+      <div 
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6"
+      >
         {activeMessages.length === 0 ? (
           /* Dashboard Landing State */
           <div className="max-w-2xl mx-auto h-full flex flex-col justify-center py-10">
