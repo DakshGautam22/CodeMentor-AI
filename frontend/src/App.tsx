@@ -1,10 +1,22 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/authStore";
+import { useUiStore } from "./store/uiStore";
 import { Auth } from "./pages/Auth";
 import { Dashboard } from "./pages/Dashboard";
 
 function App() {
   const { isAuthenticated } = useAuthStore();
+  const { themeMode } = useUiStore();
+
+  // Keep html class in sync with the Zustan store themeMode
+  useEffect(() => {
+    if (themeMode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [themeMode]);
 
   return (
     <Router>
@@ -25,3 +37,4 @@ function App() {
 }
 
 export default App;
+
