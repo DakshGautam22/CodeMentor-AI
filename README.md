@@ -2,7 +2,7 @@
 
 CodeMentor AI is a full-stack, state-of-the-art AI Coding Assistant designed to enhance the developer experience. Inspired by premium products like Cursor, ChatGPT, and Linear, CodeMentor AI integrates a ChatGPT-style conversation workspace with an embedded Monaco Code Editor, supporting real-time code generation, line-by-line explanation, static code auditing, performant optimization, automatic documentation, and educational programming walk-throughs.
 
-This project is built using modern cloud-native architectures, suitable as a **Final Year Major Project** and for **Software Engineering Placement** showcases.
+This project is built using modern cloud-native architectures, suitable as a **Summer-Intern Project** and for **Software Engineering Placement** showcases.
 
 ---
 
