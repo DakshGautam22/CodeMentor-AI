@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-dark-950: #09090b;
   --color-dark-900: #0e0e11;
@@ -215,4 +217,141 @@
 /* Pulse animation for code analysis glow */
 .glowing-glow {
   box-shadow: 0 0 30px 4px rgba(112, 71, 235, 0.15);
+}
+
+/* Dark mode theme override for pure black bg, charcoal cards, and neon green accents */
+:root.dark, .dark {
+  /* Pure Black Background like in the screenshot */
+  --color-dark-950: #000000;
+  
+  /* Charcoal backgrounds for cards and panels */
+  --color-dark-900: #08080a; /* Search bar, input, sub-panels */
+  --color-dark-850: #101012; /* Sidebar items, card backgrounds */
+  --color-dark-800: #1a1a1f; /* Borders, dividing lines */
+  --color-dark-700: #2b2b33;
+  --color-dark-600: #494957;
+  --color-dark-500: #6e6e7d;
+
+  /* Neon Green Brand Colors */
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-300: #86efac;
+  --color-brand-400: #4ade80;
+  --color-brand-500: #22c55e; /* Bright Neon Green */
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
+}
+
+/* Neon highlights and text glow in dark mode */
+.dark .text-brand-300,
+.dark .text-brand-400,
+.dark .text-brand-500,
+.dark .text-brand-600,
+.dark .text-brand-650 {
+  color: var(--color-brand-500) !important;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.5), 0 0 15px rgba(34, 197, 94, 0.15) !important;
+}
+
+/* Make sure active elements get a bright neon outline/border */
+.dark .border-brand-500,
+.dark .border-brand-400,
+.dark .focus\:border-brand-500:focus,
+.dark .focus\:ring-brand-500\/25:focus {
+  border-color: var(--color-brand-500) !important;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Glowing container shadows */
+.dark .glowing-glow {
+  box-shadow: 0 0 35px 6px rgba(34, 197, 94, 0.2) !important;
+}
+
+/* Glass components style overrides in dark mode */
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.dark .glass-card {
+  background: rgba(12, 12, 14, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark .glass-card:hover {
+  border-color: rgba(34, 197, 94, 0.25) !important;
+}
+
+.dark .glass-input {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .glass-input:focus {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(34, 197, 94, 0.5) !important;
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.25) !important;
+}
+
+/* Adjust button states for neon buttons */
+.dark .bg-brand-500 {
+  background-color: var(--color-brand-500) !important;
+  color: #000000 !important; /* High contrast text on neon green */
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4) !important;
+}
+
+.dark .bg-brand-500:hover {
+  background-color: var(--color-brand-400) !important;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.6) !important;
+}
+
+.dark .bg-brand-500 .text-white {
+  color: #000000 !important;
+}
+
+.dark .bg-brand-500 svg {
+  stroke: #000000 !important;
+}
+
+/* User Message bubble - keep readable */
+.dark .bg-brand-500.text-white {
+  background-color: #121214 !important;
+  color: #ffffff !important;
+  border: 1px solid var(--color-brand-500);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.1);
+}
+
+.dark .bg-brand-500.text-white p {
+  color: #ffffff !important;
+}
+
+/* Scrollbar customized with green accents */
+:root.dark ::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.25);
+}
+
+:root.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.45);
+}
+
+/* Ensure LLM generated response markdown text is solid white in dark mode */
+.dark .markdown-body,
+.dark .markdown-body p,
+.dark .markdown-body li,
+.dark .markdown-body ol,
+.dark .markdown-body ul,
+.dark .markdown-body h1,
+.dark .markdown-body h2,
+.dark .markdown-body h3,
+.dark .markdown-body h4,
+.dark .markdown-body h5,
+.dark .markdown-body h6,
+.dark .markdown-body blockquote,
+.dark .markdown-body table,
+.dark .markdown-body td,
+.dark .markdown-body th {
+  color: #ffffff !important;
 }

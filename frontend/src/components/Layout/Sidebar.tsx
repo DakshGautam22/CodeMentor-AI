@@ -98,7 +98,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-brand-400 flex items-center justify-center shadow-lg shadow-brand-500/20">
             <Terminal className="w-4 h-4 text-white" />
           </div>
-          <span className="font-semibold text-lg bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+          <span className="font-semibold text-lg text-slate-900 dark:text-white">
             CodeMentor AI
           </span>
         </div>
